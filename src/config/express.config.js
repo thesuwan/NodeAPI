@@ -5,6 +5,9 @@ const routerConfig = require("./router.config");
 // Middleware to parse JSON requests
 app.use(express.json());
 
+// Middleware to parse URL-encoded data
+app.use(express.urlencoded({ extended: true }));
+
 // Mount the router configuration
 app.use(routerConfig);
 
@@ -21,7 +24,7 @@ app.use((req, res, next) => {
 // Error handling middleware
 app.use((error, req, res, next) => {
     if (error) {
-        console.log(error.message);
+        console.log(error.message); 
         res.status(error.code).json({
             result: error.detail,
             meta: null,

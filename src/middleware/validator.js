@@ -11,7 +11,7 @@ const validChecker = (schema) => {
         } catch (exception) {
             // Construct an error object from the validation error details
             const error = {};
-            exception.details.forEach((value) => {
+            exception.details.map((value) => {
                 error[value.context.key] = value.message;
             });
             // Pass the error object to the error handling middleware
